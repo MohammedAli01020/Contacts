@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="menu_title_insert_dummy_data">insert dummy data</string>
+    <string name="menu_title_remove_all_data">remove all</string>
+</resources>
