@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,6 +51,11 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         mNameEditText = findViewById(R.id.et_name);
         mPhoneNumberEditText = findViewById(R.id.et_phone_number);
@@ -106,6 +112,11 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                 return true;
             }
 
+            case android.R.id.home: {
+                cancel();
+                return true;
+            }
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -155,6 +166,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
         mToast = Toast.makeText(this, "contact updated successfully", Toast.LENGTH_SHORT);
         mToast.show();
+        finish();
     }
 
     private void cancel() {
